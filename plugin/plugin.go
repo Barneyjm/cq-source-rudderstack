@@ -17,6 +17,7 @@ func Plugin() *source.Plugin {
 		Version,
 		schema.Tables{
 			resources.SourcesTable(),
+			resources.DestinationsTable(),
 		},
 		client.New,
 	)
