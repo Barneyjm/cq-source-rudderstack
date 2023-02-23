@@ -1,4 +1,4 @@
-module github.com/rudderlabs/cq-source-rudderstack
+module github.com/barneyjm/cq-source-rudderstack
 
 go 1.19
 
