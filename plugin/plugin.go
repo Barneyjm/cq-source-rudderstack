@@ -1,10 +1,12 @@
 package plugin
 
 import (
+	"github.com/barneyjm/cq-source-rudderstack/client"
+	"github.com/barneyjm/cq-source-rudderstack/resources/connections"
+	"github.com/barneyjm/cq-source-rudderstack/resources/destinations"
+	"github.com/barneyjm/cq-source-rudderstack/resources/sources"
 	"github.com/cloudquery/plugin-sdk/plugins/source"
 	"github.com/cloudquery/plugin-sdk/schema"
-	"github.com/rudderlabs/cq-source-rudderstack/client"
-	"github.com/rudderlabs/cq-source-rudderstack/resources"
 )
 
 var (
@@ -16,8 +18,9 @@ func Plugin() *source.Plugin {
 		"rudderlabs-rudderstack",
 		Version,
 		schema.Tables{
-			resources.SourcesTable(),
-			resources.DestinationsTable(),
+			sources.SourcesTable(),
+			destinations.DestinationsTable(),
+			connections.ConnectionsTable(),
 		},
 		client.New,
 	)

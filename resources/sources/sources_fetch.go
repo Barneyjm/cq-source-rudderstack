@@ -3,19 +3,21 @@ package sources
 import (
 	"context"
 
+	"github.com/barneyjm/cq-source-rudderstack/client"
+
 	"github.com/cloudquery/plugin-sdk/schema"
 )
 
 func fetchSources(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {
-	client, _ := setupClient()
-	sourcesPage, err := client.Sources.List(context.Background())
+	c := meta.(*client.Client)
+	sourcesPage, err := c.RudderStack.Sources.List(ctx)
 	if err != nil {
 		return err
 	}
 
 	for sourcesPage != nil {
 		res <- sourcesPage.Sources
-		sourcesPage, err = client.Sources.Next(context.Background(), sourcesPage.Paging)
+		sourcesPage, err = c.RudderStack.Sources.Next(ctx, sourcesPage.Paging)
 		if err != nil {
 			return err
 		}

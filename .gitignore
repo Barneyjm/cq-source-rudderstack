@@ -36,3 +36,7 @@ cq-source-rudderstack
 
 dist
 *.log
+__debug_bin
+.cq/
+.vscode/
+
